@@ -142,10 +142,14 @@ public class GUI extends JFrame implements ActionListener {
                             colorBoxes();
                             congratulations();
                         }
-                        else {
+                        else if (attemptNum != 5) {
                             colorBoxes();
                             attemptNum++;
                             displayText = "";
+                        }
+                        else {
+                            colorBoxes();
+                            lose();
                         }
                     }
                     else {
@@ -426,5 +430,9 @@ public class GUI extends JFrame implements ActionListener {
     private void congratulations() {
         System.out.println("Congrats, you guessed the correct word: " + selectedWord);
         System.out.println("You got guessed it in " + (attemptNum+1) + " tries.");
+    }
+    
+    private void lose() {
+        System.out.println("Unfortunately, you couldn't guess the word, the word was: " + selectedWord);
     }
 }
